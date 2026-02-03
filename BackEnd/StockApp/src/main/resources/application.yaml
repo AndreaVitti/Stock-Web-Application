@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: stockApp
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/favstocksdb
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database: postgresql
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+client:
+  base-Url: https://query1.finance.yahoo.com/v8/finance/chart/

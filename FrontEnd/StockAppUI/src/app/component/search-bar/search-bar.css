@@ -1,0 +1,72 @@
+.searchCont {
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.searchCont.homeBar {
+    background-color: var(--background-search-home-color);
+}
+
+.searchCont.topBar {
+    background-color: var(--background-search-topbar-color);
+}
+
+.searchForm input {
+    color: var(--text-color);
+    font-family: Orbitron;
+    background: none;
+    border: none;
+    border-right: 2px solid var(--text-color);
+}
+
+.searchForm input:focus {
+    outline: none;
+}
+
+.searchForm input::placeholder {
+    color: var(--text-color);
+}
+
+.searchForm input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px trasparent inset;
+    -webkit-text-fill-color: var(--text-color);
+    transition: background-color 5000s ease-in-out;
+}
+
+input.homeBar {
+    font-size: 4rem;
+}
+
+input.topBar {
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.searchForm button {
+    font-family: Orbitron;
+    border: none;
+    border-left: 2px solid var(--text-color);
+    cursor: pointer;
+}
+
+button.homeBar {
+    color: var(--text-color);
+    font-size: 4rem;
+    background-color: var(--search-home-btn);
+}
+
+button.topBar {
+    color: var(--text-color);
+    font-size: 2rem;
+    padding: 0.5rem;
+    background-color: var(--search-topbar-btn);
+}
+
+.searchForm button.homeBar:hover {
+    background-color: var(--search-home-btn-hover);
+}
+
+.searchForm button.topBar:hover {
+    background-color: var(--search-topbar-btn-hover);
+}

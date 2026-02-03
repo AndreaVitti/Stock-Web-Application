@@ -1,0 +1,24 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--error-backgroud);
+    width: 100%;
+    height: 100dvh;
+    font-family: Orbitron;
+}
+
+p {
+    margin: 0;
+}
+
+.main p:first-child {
+    color: var(--error-code-color);
+    font-size: 6rem;
+}
+
+.main p:last-child {
+    color: var(--text-color);
+    font-size: 4rem;
+}

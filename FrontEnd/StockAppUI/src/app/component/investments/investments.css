@@ -1,0 +1,80 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-background-color);
+    color: var(--text-color);
+    width: 100%;
+    height: 100dvh;
+}
+
+.navBar {
+    display: flex;
+    justify-content: end;
+    background-color: var(--nav-bar-color);
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+.tableCont {
+    margin: 1rem;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    width: calc(100% - 2rem);
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.tableCont::-webkit-scrollbar {
+    display: none;
+}
+
+.invTable {
+    table-layout: fixed;
+    font-family: Orbitron;
+    font-size: 2rem;
+    line-height: 4rem;
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+}
+
+th {
+    background-color: var(--table-header-color);
+    width: 20%;
+}
+
+th:not(:last-child) {
+    border-right: 4px solid var(--text-color);
+}
+
+tr td:not(:last-child) {
+    border-right: 4px solid var(--text-color);
+}
+
+td {
+    background-color: var(--table-cell-color);
+    padding-left: 0.5rem;
+    border-top: 4px solid var(--text-color);
+}
+
+table button {
+    font-size: 2rem;
+    font-family: Orbitron;
+    background-color: var(--button-background);
+    padding: 0.5rem 0.75rem;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+table svg {
+    fill: var(--text-color);
+    width: 2rem;
+    height: 2rem;
+}
+
+table button:hover {
+    background-color: var(--button-background-hover);
+}

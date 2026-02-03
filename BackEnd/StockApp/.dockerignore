@@ -1,0 +1,7 @@
+.idea/
+.mvn/
+target/
+.git
+.gitignore
+.gitattributes
+Dockerfile

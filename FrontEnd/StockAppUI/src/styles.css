@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --text-color: #ffffff;
+    --main-background-color: #9b5800;
+    --background-search-home-color: #cc7400;
+    --background-search-topbar-color: #686f8b;
+    --search-home-btn: #9b5800;
+    --search-topbar-btn: #3a3e50;
+    --search-home-btn-hover: #5a3300;
+    --search-topbar-btn-hover: #1a1d25;
+    --error-backgroud: #3a3e50;
+    --error-code-color: #880a0a;
+    --nav-bar-color: #5f3600;
+    --table-header-color: #3a3e50;
+    --table-cell-color: #686f8b;
+    --button-background: #3a3e50;
+    --button-background-hover: #1a1d25;
+    --char-background-color: #1a1d25;
+    --modal-background-color:#1a1d25cc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2 {
+    padding: 0;
+    margin: 0;
+}

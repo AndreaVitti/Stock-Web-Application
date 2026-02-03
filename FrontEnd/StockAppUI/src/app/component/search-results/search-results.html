@@ -1,0 +1,108 @@
+<div class="main">
+    <div class="navBar">
+        <app-home-button></app-home-button>
+        <app-search-bar styleVar="topBar"></app-search-bar>
+        <app-fav-button></app-fav-button>
+        <app-inv-buttton></app-inv-buttton>
+    </div>
+    <div class="fullScopeCont">
+        <div class="dataCont">
+            @if (!loading){
+            @let symbol = resSymbol;
+            @let currency = resCurrency;
+            <app-invest-modal [hidden]="!visibleModal" [symbol]="symbol" [currency]="currency"
+                (closeModal)="visibleModal = false" (refreshTable)="refreshTable()"></app-invest-modal>
+            <div class="data">
+                <p>
+                    {{resLongName}} ({{resSymbol}})
+                </p>
+                @if (resSymbol.includes('.') && resSymbol.split('.')[1] === 'F') {
+                <p>
+                    {{resCurrentPrice}}% Currency: {{resCurrency}}
+                    <span [style.color]="resPercentage >= 0 ? '#3acc00' : '#da0700'">
+                        {{resPercentage}}%
+                    </span>
+                </p>
+                } @else {
+                <p>
+                    Current price: {{resCurrentPrice}} {{resCurrency}}
+                    <span [style.color]="resPercentage >= 0 ? '#3acc00' : '#da0700'">
+                        {{resPercentage}}%
+                    </span>
+                </p>
+                }
+                <p>
+                    Date: {{currentDate | date:'M/d/yy'}}
+                </p>
+            </div>
+            <div class="buttonBar">
+                <button (click)="getHistory()">Show history</button>
+                @if (!resSymbol.includes('.') || !(resSymbol.split('.')[1] === 'F')) {
+                <button (click)="openInvestmentModal()">Invest</button>
+                }
+                @if (favouriteOrNot){
+                <button class="alreadyFoundBtn">Already a favourite</button>
+                } @else {
+                <button (click)="addToFavourite()">Add to favorite</button>
+                }
+            </div>
+            @if (!resSymbol.includes('.') || !(resSymbol.split('.')[1] === 'F')) {
+            <div class="tableCont">
+                <table #currInvTable class="currentInvTable">
+                    <tr>
+                        <th>
+                            Capital
+                        </th>
+                        <th>
+                            Buy price
+                        </th>
+                        <th>
+                            Buy date
+                        </th>
+                        <th>
+                            Gain/loss
+                        </th>
+                    </tr>
+                    <tbody>
+                        @for (currInvRow of currInvRows; track currInvRow.idCode){
+                        <tr>
+                            <td>
+                                {{currInvRow.capital}} {{resCurrency}}
+                            </td>
+                            <td>
+                                {{currInvRow.buyPrice}} {{resCurrency}}
+                            </td>
+                            <td>
+                                {{currInvRow.buyDate}}
+                            </td>
+                            <td>
+                                <span [style.color]="currInvRow.gainLoss >= 0? '#3acc00' : '#da0700'">
+                                    {{currInvRow.gainLoss}}
+                                </span>
+                                {{resCurrency}}
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="totals">
+                <span>Tot capital: {{totalCapital}} {{resCurrency}}</span>
+                <span>Tot gain/loss:
+                    <span [style.color]="totalGainLoss >= 0? '#3acc00' : '#da0700'">
+                        {{totalGainLoss}}
+                    </span>{{resCurrency}}</span>
+            </div>
+            }
+            } @else {
+            <div class="loadingCont">
+                <div class="loadingSpinner"></div>
+                <p>Loading...</p>
+            </div>
+            }
+        </div>
+        <div [hidden]="!visibleChart" #chartContExt class="chartContExt">
+            <app-history-chart></app-history-chart>
+        </div>
+    </div>
+</div>

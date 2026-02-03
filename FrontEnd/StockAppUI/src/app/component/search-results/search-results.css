@@ -1,0 +1,196 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-background-color);
+    color: var(--text-color);
+    width: 100%;
+    height: 100dvh;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    background-color: var(--nav-bar-color);
+    padding: 0.5rem;
+    width: 100%;
+    gap: 0.5rem
+}
+
+.fullScopeCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.dataCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.data,
+.loadingCont {
+    font-family: Orbitron;
+    font-size: 2rem;
+    line-height: 2rem;
+    background-color: var(--table-cell-color);
+    padding: 1rem 2rem;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+}
+
+.loadingCont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadingSpinner{
+    background-image: url(/images/spinner.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 15dvh;
+    width: 15dvh;
+}
+
+.data {
+    margin: 1rem 0rem;
+}
+
+.buttonBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--nav-bar-color);
+    padding: 0.5rem;
+    gap: 2rem;
+    width: 100%;
+}
+
+.buttonBar button:not(.alreadyFoundBtn) {
+    color: var(--text-color);
+    font-size: 2rem;
+    font-family: Orbitron;
+    background-color: var(--button-background);
+    padding: 0.5rem;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.alreadyFoundBtn {
+    color: var(--text-color);
+    font-size: 2rem;
+    font-family: Orbitron;
+    background-color: var(--button-background-hover);
+    padding: 0.5rem;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+}
+
+.buttonBar button:not(.alreadyFoundBtn):hover {
+    background-color: var(--button-background-hover);
+}
+
+app-invest-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tableCont {
+    margin: 1rem;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    width: calc(100% - 2rem);
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.tableCont::-webkit-scrollbar {
+    display: none;
+}
+
+.currentInvTable {
+    table-layout: fixed;
+    font-family: Orbitron;
+    font-size: 2rem;
+    line-height: 4rem;
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+}
+
+th {
+    background-color: var(--table-header-color);
+    width: 25%;
+}
+
+th:not(:last-child) {
+    border-right: 4px solid var(--text-color);
+}
+
+tr td:not(:last-child) {
+    border-right: 4px solid var(--text-color);
+}
+
+td {
+    background-color: var(--table-cell-color);
+    padding-left: 0.5rem;
+    border-top: 4px solid var(--text-color);
+}
+
+.chartContExt {
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: var(--char-background-color);
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    width: 60%;
+    min-height: 50dvh;
+}
+
+.totals {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    align-content: center;
+    justify-items: center;
+    background-color: var(--nav-bar-color);
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+}
+
+.totals>* {
+    font-family: Orbitron;
+    font-size: 1.75rem;
+    background-color: var(--table-header-color);
+    padding: 0.5rem;
+    width: 100%;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    overflow-x: auto;
+}
+
+.totals>*:first-child {
+    grid-column: 1;
+}
+
+.totals>*:last-child {
+    grid-column: 4;
+}

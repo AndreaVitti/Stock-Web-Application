@@ -1,0 +1,15 @@
+<div class="modalCont" (click)="close()">
+    <div class="modal" (click)="$event.stopPropagation()">
+        <form [formGroup]="investModalForm" (submit)="addInvest()" class="modalForm">
+            <div class="innerForm">
+                <input name="capital" type="number" formControlName="capital" min="1" placeholder="Insert capital (min: 1)">
+                <input name='buyPrice' type="number" formControlName="buyPrice" min="1"
+                    placeholder="Insert buy price (min: 1)">
+                <span [innerHTML]="currency">
+                </span>
+                <input name='buyDate' type="datetime-local" formControlName="buyDate">
+                <button type="submit">Invest</button>
+            </div>
+        </form>
+    </div>
+</div>

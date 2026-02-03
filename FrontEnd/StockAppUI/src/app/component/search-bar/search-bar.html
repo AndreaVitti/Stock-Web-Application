@@ -1,0 +1,9 @@
+<div class="searchCont" [class]="styleVar">
+    <form [formGroup]="queryForm" (submit)="searchStock()" class="searchForm">
+        <div>
+            <input [class]="styleVar" type="text" id="searchbar" name='query'  formControlName="query"
+                placeholder="Search stock...">
+            <button [class]="styleVar" type="submit">Search</button>
+        </div>
+    </form>
+</div>

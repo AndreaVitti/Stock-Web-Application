@@ -1,0 +1,67 @@
+.modalCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--modal-background-color);
+    color: var(--text-color);
+    width: 100%;
+    height: 100%;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--table-cell-color);
+    padding: 1rem;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    width: auto;
+    height: 20%;
+}
+
+.innerForm {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}
+
+.innerForm>*:not(span) {
+    background-color: var(--table-cell-color);
+    color: var(--text-color);
+    font-size: 2rem;
+    font-family: Orbitron;
+    padding: 0.5rem;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+}
+
+.innerForm input:focus {
+    outline: none;
+}
+
+.innerForm span{
+    font-size: 2rem;
+    font-family: Orbitron;
+    padding: 0.5rem;
+}
+
+.innerForm input::placeholder {
+    color: var(--text-color);
+}
+
+.innerForm button {
+    background-color: var(--button-background);
+    cursor: pointer;
+}
+
+.innerForm button:hover {
+    background-color: var(--button-background-hover);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
