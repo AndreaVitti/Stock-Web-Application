@@ -86,7 +86,7 @@ export class SearchResults implements OnInit {
             capital: res.capital,
             buyPrice: res.buyPrice,
             buyDate: res.date.split('T')[0] + ' ' + res.date.split('T')[1].split('.')[0],
-            gainLoss: Number(((((this.resCurrentPrice * 100) / res.buyPrice - 100) / 100) * res.capital).toFixed(2))
+            gainLoss: Number(((((res.buyPrice * 100) / this.resCurrentPrice - 100) / 100) * res.capital).toFixed(2))
           })))),
           concatMap(() => this.stockApi.getFavourite('/favourite/get/' + this.query).pipe(
             (tap(res => {
@@ -99,8 +99,8 @@ export class SearchResults implements OnInit {
             finalize(() => {
               this.totalCapital = 0;
               this.totalGainLoss = 0;
-              this.currInvRows.map(currInvRow => { this.totalCapital += currInvRow.capital });
-              this.currInvRows.map(currInvRow => { this.totalGainLoss += currInvRow.gainLoss });
+              this.currInvRows.map(currInvRow => { this.totalCapital = Number(this.totalCapital + currInvRow.capital.toFixed(2)) });
+              this.currInvRows.map(currInvRow => { this.totalGainLoss = Number(this.totalGainLoss + currInvRow.gainLoss.toFixed(2)) });
               this.chgdet.markForCheck();
               this.loading = false;
             })
@@ -153,13 +153,13 @@ export class SearchResults implements OnInit {
         capital: res.capital,
         buyPrice: res.buyPrice,
         buyDate: res.date.split('T')[0] + ' ' + res.date.split('T')[1].split('.')[0],
-        gainLoss: Number(((((this.resCurrentPrice * 100) / res.buyPrice - 100) / 100) * res.capital).toFixed(2))
+        gainLoss: Number(((((res.buyPrice * 100) / this.resCurrentPrice - 100) / 100) * res.capital).toFixed(2))
       }))))).subscribe({
         complete: () => {
           this.totalCapital = 0;
           this.totalGainLoss = 0;
-          this.currInvRows.map(currInvRow => { this.totalCapital += currInvRow.capital });
-          this.currInvRows.map(currInvRow => { this.totalGainLoss += currInvRow.gainLoss });
+          this.currInvRows.map(currInvRow => { this.totalCapital = Number(this.totalCapital + currInvRow.capital.toFixed(2)) });
+          this.currInvRows.map(currInvRow => { this.totalGainLoss = Number(this.totalGainLoss + currInvRow.gainLoss.toFixed(2)) });
           this.chgdet.markForCheck();
         }
       });
