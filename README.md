@@ -74,13 +74,13 @@ Once the Docker containers are running, please consult the [OpenAPI](http://loca
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`POSTGRES_USER`(by default **user**): is the username of the database  
+- `POSTGRES_USER`(by default **user**): is the username of the database  
 
-`POSTGRES_PASSWORD`(by default **123456789**): is the password of the database 
+- `POSTGRES_PASSWORD`(by default **123456789**): is the password of the database 
 
-`BUCKET_CAPACITY`(by default **6**): is the capacity of the bucket rate limiter
+- `BUCKET_CAPACITY`(by default **6**): is the capacity of the bucket rate limiter
 
-`REFILL_RATE`(by default **5**): is the refill rate of the bucket 
+- `REFILL_RATE`(by default **5**): is the refill rate of the bucket 
 
 Change them as you see fit.
 ## Technologies Stack
