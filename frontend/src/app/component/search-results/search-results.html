@@ -1,0 +1,102 @@
+<div class="main">
+    <div class="navBar">
+        <app-home-button></app-home-button>
+        <app-search-bar styleVar="topBar"></app-search-bar>
+        <app-fav-button></app-fav-button>
+        <app-inv-buttton></app-inv-buttton>
+    </div>
+    <div class="fullScopeCont">
+        <div class="dataCont">
+            @if (!loading()){
+            <app-invest-modal [hidden]="!visibleModal" [symbol]="stockResult().stockDTO.symbol"
+                [currency]="stockResult().stockDTO.currency" (closeModal)="visibleModal = false"
+                (refreshTable)="refreshTable()"></app-invest-modal>
+            <div class="data">
+                <p>
+                    {{stockResult().stockDTO.name}} ({{stockResult().stockDTO.symbol}})
+                </p>
+                @if (stockResult().stockDTO.symbol.includes('.') && stockResult().stockDTO.symbol.split('.')[1] === 'F')
+                {
+                <p>
+                    {{resCurrentPrice()}}% Currency: {{stockResult().stockDTO.currency}}
+                    <span [style.color]="stockResult().percentage >= 0 ? '#3acc00' : '#da0700'">
+                        {{stockResult().percentage}}%
+                    </span>
+                </p>
+                } @else {
+                <p>
+                    Current price: {{resCurrentPrice()}} {{stockResult().stockDTO.currency}}
+                    <span [style.color]="stockResult().percentage >= 0 ? '#3acc00' : '#da0700'">
+                        {{stockResult().percentage}}%
+                    </span>
+                </p>
+                }
+                <p>
+                    Date: {{currentDate() | date:'M/d/yy'}}
+                </p>
+            </div>
+            <div class="buttonBar">
+                <button (click)="getHistory()">Show history</button>
+                @if (!stockResult().stockDTO.symbol.includes('.') || !(stockResult().stockDTO.symbol.split('.')[1] ===
+                'F')) {
+                <button (click)="openInvestmentModal()">Invest</button>
+                }
+                @if (favouriteOrNot()){
+                <button class="alreadyFoundBtn">Already a favourite</button>
+                } @else {
+                <button (click)="addToFavourite()">Add to favorite</button>
+                }
+            </div>
+            @if (currInvRows().length > 0)
+            {
+            <div class="tableHeader">
+                <span>Capital</span>
+                <span>Buy price</span>
+                <span>Buy date</span>
+                <span>Gain/loss</span>
+            </div>
+            <div class="tableCont">
+                <table class="currentInvTable">
+                    <tbody>
+                        @for (currInvRow of currInvRows(); track currInvRow.identificationCode){
+                        <tr>
+                            <td>
+                                {{currInvRow.investedCapital}} {{stockResult().stockDTO.currency}}
+                            </td>
+                            <td>
+                                {{currInvRow.buyPrice}} {{stockResult().stockDTO.currency}}
+                            </td>
+                            <td>
+                                {{currInvRow.buyDate}}
+                            </td>
+                            <td>
+                                <span [style.color]="currInvRow.gainLoss >= 0? '#3acc00' : '#da0700'">
+                                    {{currInvRow.gainLoss}}
+                                </span>
+                                {{stockResult().stockDTO.currency}}
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="totals">
+                <span>Tot capital: {{totalCapital()}} {{stockResult().stockDTO.currency}}</span>
+                <span>Tot gain/loss:
+                    <span [style.color]="totalGainLoss() >= 0? '#3acc00' : '#da0700'">
+                        {{totalGainLoss()}}
+                    </span>{{stockResult().stockDTO.currency}}</span>
+            </div>
+            }
+            } @else {
+            <div class="loadingCont">
+                <div class="loadingSpinner"></div>
+                <p>Loading...</p>
+            </div>
+            }
+        </div>
+        <div [hidden]="!visibleChart()" class="chartContExt">
+            <app-history-chart></app-history-chart>
+        </div>
+    </div>
+</div>

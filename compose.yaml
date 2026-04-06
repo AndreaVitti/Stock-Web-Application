@@ -1,0 +1,55 @@
+services:
+  postgres:
+    container_name: postgresdb
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: financedb
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      PGDATA: /data/postgres
+    ports:
+      - 5433:5432
+    networks:
+      - financeServiceNetwork
+    volumes:
+      - postgres:/data/postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      retries: 5
+      start_period: 5s
+
+  back_end_service:
+    build: ./backend
+    container_name: backEndService
+    environment:
+      POSTGRES_DB: financedb
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      BUCKET_CAPACITY: ${BUCKET_CAPACITY}
+      REFILL_RATE: ${REFILL_RATE}
+      DB_HOST: postgres
+      DB_PORT: 5432
+    ports:
+      - 8081:8080
+    depends_on: 
+      postgres:
+       condition: service_healthy
+    networks:
+      - financeServiceNetwork
+
+  front_end_service:
+      build: ./frontend
+      container_name: frontEndService
+      ports:
+        - 4201:80
+      networks:
+        - financeServiceNetwork
+
+networks:
+  financeServiceNetwork:
+    name: financeServiceNetwork
+    driver: bridge
+
+volumes:
+  postgres:
