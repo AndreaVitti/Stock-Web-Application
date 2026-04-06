@@ -10,7 +10,7 @@ An application for tracking financial stocks and keep your investments organized
 The emptire application centers around the use of this Yahoo Finance endpoint: 
 
 ```http
- https://query1.finance.yahoo.com/v8/finance/chart/AAPL
+ https://query1.finance.yahoo.com/v8/finance/chart/{SYMBOL}
 ```
 
 This will return useful data regarding the selected financial stock such as closing price, highest price etc... which will be organize neatly by this app.
