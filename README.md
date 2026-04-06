@@ -10,7 +10,7 @@ An application for tracking financial stocks and keep your investments organized
 The emptire application centers around the use of this Yahoo Finance endpoint: 
 
 ```http
- https://query1.finance.yahoo.com/v8/finance/chart/{SYMBOL}
+ https://query1.finance.yahoo.com/v8/finance/chart/AAPL
 ```
 
 This will return useful data regarding the selected financial stock such as closing price, highest price etc... which will be organize neatly by this app.
@@ -41,7 +41,7 @@ This page will display the most relevant info of the financial stock, including 
 Creating a favourite will also save its history to database.  
 To add an investment simply click the button and fill the form, once finished click invest.
 
-![Img missing](screenshots/favourtites.png)
+![Img missing](screenshots/favourites.png)
 
 Here you will be able to manage your favourite stock:
 - to view it click the magnifying glass
