@@ -42,7 +42,7 @@ This application features the following:
 ## How to use it
 
 Since it uses Yahoo Finance endpoint to search the desired financial stock it will be require the use of the its correct **SYMBOL** (examples are `RACE.MI` or `MFEB.MI`).  
-The application has fundametally 3 tabs:
+The application has fundametally 3 tabs (the following screenshots are purely examples):
 - a result page
 - investment page
 - favourite page
