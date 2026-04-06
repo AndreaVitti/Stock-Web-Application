@@ -28,13 +28,14 @@ export class HistoryChart implements OnInit {
       Tooltip)
   }
 
-  chartBuild(pricesData: (PriceData)[], posOrNeg: boolean, currInvestments: CurrInvRow[]): Chart {
-    this.chartEle.nativeElement;
+  chartBuild(pricesData: PriceData[], posOrNeg: boolean, currInvestments: CurrInvRow[]): Chart {
     if (posOrNeg) {
       this.graphColor = '#3acc00';
     } else {
       this.graphColor = '#da0700';
     }
+
+    pricesData = pricesData.filter((price) => !(price.high === 0 || price.low === 0 || price.open === 0 || price.y === 0));
 
     const annotations: Record<number, AnnotationOptions> = {};
 
