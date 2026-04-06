@@ -9,6 +9,7 @@ To deploy this project first install [git](https://git-scm.com/) and [Docker](ht
 
 ```bash
 git clone https://github.com/AndreaVitti/Stock-Web-Application.git
+```
 
 Open the cloned repo and find the folder containing the file **compose.yaml**: there open your terminal and run the following command:
 
