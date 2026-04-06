@@ -64,7 +64,6 @@ export class HistoryChart implements OnInit {
       });
     }
 
-    console.log(annotations);
     const config: ChartConfiguration = {
       type: 'line',
       data: {

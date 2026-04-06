@@ -33,6 +33,7 @@ export class InvestModal {
       buyPrice: (!buyPrice) ? null : buyPrice,
       currency: this.currency
     }).subscribe(() => {
+      this.investModalForm.reset();
       this.refreshTable.emit();
       this.closeModal.emit();
     });
