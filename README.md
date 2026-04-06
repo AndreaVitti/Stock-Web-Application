@@ -3,7 +3,19 @@
 
 An application for tracking financial stocks and keep your investments organized.
 
+## Deployment
 
+To deploy this project first install [git](https://git-scm.com/) and [Docker](https://www.docker.com/), then run the command git clone inside a folder of your choosing:
+
+```bash
+git clone https://github.com/AndreaVitti/Stock-Web-Application.git
+
+Open the cloned repo and find the folder containing the file **compose.yaml**: there open your terminal and run the following command:
+
+```bash
+docker-compose up --build -d
+```
+This will build the container for the application the just paste this url in your browser: http://localhost:4201
 
 ## API Reference
 
@@ -14,7 +26,6 @@ The emptire application centers around the use of this Yahoo Finance endpoint:
 ```
 
 This will return useful data regarding the selected financial stock such as closing price, highest price etc... which will be organize neatly by this app.
-
 
 ## Functionalities
 
